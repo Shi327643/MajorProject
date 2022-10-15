@@ -1,0 +1,24 @@
+﻿@model TravelBookingProject.ViewModel.TravelViewModel
+@{
+    ViewBag.Title = "DisplayTravelType";
+}
+
+<h2>DisplayTravelType</h2>
+
+<table class="table table-striped">
+    <tr>
+        <th>Travel Id</th>
+        <th>Travel type</th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model.travelList)
+    {
+        <tr>
+            <td>@item.TravelId</td>
+            <td>@item.Travel_Type</td>
+
+
+        </tr>
+
+    }
+</table>

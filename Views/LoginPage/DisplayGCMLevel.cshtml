@@ -1,0 +1,23 @@
+﻿@model TravelBookingProject.ViewModel.TravelViewModel
+@{
+    ViewBag.Title = "DisplayGCMLevel";
+}
+
+<h2>DisplayGCMLevel</h2>
+<table class="table table-striped">
+    <tr>
+        <th>GCM Id</th>
+        <th>GCM Levels</th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model.GCMList)
+    {
+        <tr>
+            <td>@item.GCMId</td>
+            <td>@item.GCM_Level</td>
+
+
+        </tr>
+
+    }
+</table>
