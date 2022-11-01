@@ -1,0 +1,137 @@
+﻿@model TravelBookingProject.ViewModel.EmployeeAndFamilyViewModel
+@{
+    ViewBag.Title = "EmployeeAndFamilyInfoForm";
+}
+
+<style>
+    body {
+        background-color:cornsilk;
+    }
+</style>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>                    @*We are doing this to validate the field at client side*@
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
+<h2 class="text-center" style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;color:darkgreen; font-size:45px; font-weight:200">Employee And Family Information</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+<table class="table" style="font-size:15px; background-color:azure">
+
+    <tr>
+        <td>@Html.Label("Last Name")</td>
+        <td>
+            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+        </td>
+        <td>@Html.Label("First Name")</td>
+        <td>
+            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+        </td>
+    </tr>
+    <tr>
+        <td>@Html.Label("Date of Birth")</td>
+        <td>
+            @Html.EditorFor(m => m.DateOfBirth, new { @class = "form-control" })
+            &nbsp;&nbsp;
+            <img src="~/Content/images/cal5.png" style="height:40px; width:40px" />
+        </td>
+        <td>@Html.Label("Gender")</td>
+        <td>
+            @Html.TextBoxFor(m => m.Gender, new { @class = "form-control" })
+        </td>
+    </tr>
+    <tr>
+        <td>@Html.Label("Primary Citizenship")</td>
+        <td>
+            @Html.TextBoxFor(m => m.PrimaryCitizenship, new { @class = "form-control" })
+        </td>
+        <td>@Html.Label("Secondary Citizenship")</td>
+        <td>
+            @Html.TextBoxFor(m => m.SecondaryCitizenship, new { @class = "form-control" })
+        </td>
+    </tr>
+    <tr>
+        <td>@Html.Label("DASID Number")</td>
+        <td>
+            @Html.TextBoxFor(m => m.DasId, new { @class = "form-control" })
+        </td>
+        <td>@Html.Label("Employee Email Address")</td>
+        <td>
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        </td>
+    </tr>
+    <tr>
+        <td>@Html.Label("GCM Level in Home Country")</td>
+        <td>
+            @Html.DropDownListFor(m => m.GCM_Id_Home_Country, Model.GCMItem ?? new List<SelectListItem>(), "--------Select------------", new { @class = "form-control" })
+        </td>
+        <td>@Html.Label("GCM Level in Host Country")</td>
+        <td>
+            @Html.DropDownListFor(m => m.GCM_Id_Host_Country, Model.GCMItem ?? new List<SelectListItem>(), "--------Select------------", new { @class = "form-control" })
+        </td>
+    </tr>
+   
+    <tr>
+        <td>@Html.Label("Family Status from a home country legal perspective")</td>
+        <td>
+            @Html.TextBoxFor(m => m.Family_Status_Home_Country, new { @class = "form-control" })
+        </td>
+
+    </tr>
+    <tr>
+        <td>@Html.Label("Family in Host Country")</td>
+        <td>
+            @Html.TextBoxFor(m => m.Family_Host_Country, new { @class = "form-control" })
+        </td>
+
+    </tr>
+    <tr>
+        <td>@Html.Label("Where will employees spouse/partner be living whilst employee in the host country?")</td>
+        <td>
+            @Html.TextBoxFor(m => m.Spouse_Location, new { @class = "form-control" })
+        </td>
+    </tr>
+    
+
+   
+    <tr>
+        <td colspan="2" style="text-align:center">
+            <input type="submit" class="btn btn-success" style="height:50px; width:100px; font-size:20px; background-color:chartreuse; color:black; margin-left:500px"  onclick="if (confirm('Are the details entered by you correct?')) {return true;} else {return false;}" />
+        </td>
+    </tr>
+
+</table>
+
+}
+@section Scripts {
+
+    @Scripts.Render("~/bundles/jqueryui")
+    @Styles.Render("~/Content/cssjqryUi")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("input[type=datetime]").datepicker({
+                dateFormat: "yy-m-dd",
+                changeMonth: true,
+                changeYear: true,
+
+
+            });
+            $("input[type=datetime]").datepicker({
+                dateFormat: "yy-m-dd",
+                changeMonth: true,
+                changeYear: true,
+
+
+            });
+           
+
+
+
+        });
+    </script>
+
+}

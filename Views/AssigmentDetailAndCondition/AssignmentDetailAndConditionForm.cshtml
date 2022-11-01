@@ -1,0 +1,221 @@
+﻿@model TravelBookingProject.ViewModel.AssignmentDetailAndConditionViewModel
+@{
+    ViewBag.Title = "AssignmentDetailAndConditionForm";
+}
+<style>
+    body {
+        background-color: cornsilk;
+    }
+</style>
+<h2 class="text-center" style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;color:darkgreen; font-size:45px; font-weight:200">Assignment Detail And Condition</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" });
+    <table  class="table" style="font-size:15px; background-color:azure; table-layout:fixed" >
+        <tr>
+            <td>@Html.Label("From(Home Country)")</td>
+            <td>
+                @Html.DropDownListFor(m => m.HomeCountryId, Model.hostCountryList ?? new List<SelectListItem>(), "--------Select------------", new { id = "ddlCountries", @class = "form-control" })
+            </td>
+            <td>@Html.Label("To(Host Country)")</td>
+            <td>
+                @Html.DropDownListFor(m => m.HostCountryId, Model.hostCountryList ?? new List<SelectListItem>(), "--------Select------------", new { id = "ddlhostCountries", @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.Label("From(Home City)")</td>
+            <td>
+                @Html.DropDownListFor(m => m.HomeCityId, new List<SelectListItem>(), new { id = "ddlCities", @class = "form-control" })
+            </td>
+            <td>@Html.Label("To(Host City)")</td>
+            <td>
+                @Html.DropDownListFor(m => m.HostCityId, new List<SelectListItem>(), new { id = "ddlhostCities", @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.Label("From GBU")</td>
+            <td>
+                @Html.TextBoxFor(m => m.FromGBU, new { @class = "form-control" })
+            </td>
+            <td>@Html.Label("To GBU")</td>
+            <td>
+                @Html.TextBoxFor(m => m.ToGBU, new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.Label("From Legal Entity")</td>
+            <td>
+                @Html.TextBoxFor(m => m.FromLegalEntity, new { @class = "form-control" })
+            </td>
+            <td>@Html.Label("To Legal Entity")</td>
+            <td>
+                @Html.TextBoxFor(m => m.ToLegalEntity, new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.Label("From Division")</td>
+            <td>
+                @Html.TextBoxFor(m => m.FromDivision, new { @class = "form-control" })
+            </td>
+            <td>@Html.Label("To Division")</td>
+            <td>
+                @Html.TextBoxFor(m => m.ToDivision, new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.Label("Expected Start Date")</td>
+            <td>
+
+
+                @Html.EditorFor(m => m.Expected_Start_Date, new { @class = "form-control" })
+                <img src="~/Content/images/cal5.png" style="height:30px; width:30px" />
+
+
+
+            </td>
+           
+            <td>@Html.Label("Expected End Date")</td>
+            <td>
+
+                @Html.EditorFor(m => m.Expected_End_Date, new { @class = "form-control" })
+                <img src="~/Content/images/cal5.png" style="height:30px; width:30px" />
+
+
+            </td>
+            
+        </tr>
+        <tr>
+            <td>@Html.Label("Reason for this mobility request")</td>
+            <td>
+                @Html.TextBoxFor(m => m.Reason_Mobility_Request, new { @class = "form-control" })
+            </td>
+            <td>@Html.Label("Is this employee replacing another internationally employee?")</td>
+            <td>
+                @Html.DropDownListFor(m => m.Employee_Replacing_International_Employee, Model.checkList ?? new List<SelectListItem>(), "--------Select------------" , new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.Label("Employee will be directly reporting to(please provide the exact position)")</td>
+            <td>
+                @Html.TextBoxFor(m => m.Employee_Reporting_To, new { @class = "form-control" })
+            </td>
+            <td>@Html.Label("Performance review will be done by(please provide the exact position too")</td>
+            <td>
+                @Html.TextBoxFor(m => m.Performance_review_done_by, new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.Label("Will Employee work full time in host country?")</td>
+            <td>
+                @Html.DropDownListFor(m => m.Employee_Work_Full_Time_in_HostCountry, Model.checkList ?? new List<SelectListItem>(), "--------Select------------", new { @class = "form-control" })
+            </td>
+
+        </tr>
+        <tr>
+            <td >@Html.Label("If employee not full time in host country then provide estimated work schedule Or provide an estimate of the percentage of the time employee will work in the host country")</td>
+            <td>
+                @Html.TextBoxFor(m => m.Employee_Work_not_Full_Time_then_Estimated_Work_Schedule, new { @class = "form-control" })
+            </td>
+
+        </tr>
+        <tr>
+            <td>@Html.Label("Expected employment relationship in the host country")</td>
+            <td>
+                @Html.TextBoxFor(m => m.Employee_relationship_host_country, new { @class = "form-control" })
+            </td>
+
+        </tr>
+        <tr>
+            <td>@Html.Label("Why isn't a local employee being considered for this position?(rationale to be used for potential Labour and Immigration law requirements)")</td>
+            <td>
+                @Html.TextBoxFor(m => m.Why_local_employee_not_consider_for_this_position, new { @class = "form-control" })
+            </td>
+
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align:center">
+                <input type="submit" class="btn btn-success" style="height:50px; width:100px; font-size:20px; background-color:chartreuse; color:black; margin-left:550px" onclick="if (confirm('Are the details entered by you correct?')) {return true;} else {return false;}" />
+            </td>
+        </tr>
+
+    </table>
+}
+
+@section Scripts {
+
+    @Scripts.Render("~/bundles/jqueryui")
+    @Styles.Render("~/Content/cssjqryUi")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("input[type=datetime]").datepicker({
+                dateFormat: "yy-m-dd",
+                changeMonth: true,
+                changeYear: true,
+
+
+            });
+            $("input[type=datetime]").datepicker({
+                dateFormat: "yy-m-dd",
+                changeMonth: true,
+                changeYear: true,
+
+
+            });
+            $("#startDate").change(function () {
+                startDate = $(this).datepicker("getDate");
+                $("#endDate").datepicker("option", "minDate", startDate);
+            })
+
+            $("#ddlCountries").change(function () {
+                var country = $(this).val();
+                console.log(country)
+                var txt = $("#dd_Company option:selected").text();
+                $.getJSON("/AssigmentDetailAndCondition/Cities", { CountryId: country },
+                    function (classesData) {
+                        var select = $("#ddlCities");
+                        select.empty();
+                        select.append($('<option/>', {
+                            value: 0,
+                            text: "Select a City"
+                        }));
+                        $.each(classesData, function (index, itemData) {
+                            select.append($('<option/>', {
+                                value: itemData.Value,
+                                text: itemData.Text
+                            }));
+                        });
+                    });
+            });
+
+            $("#ddlhostCountries").change(function () {
+                var country = $(this).val();
+                console.log(country)
+                var txt = $("#dd_Company option:selected").text();
+                $.getJSON("/AssigmentDetailAndCondition/Cities", { CountryId: country },
+                    function (classesData) {
+                        var select = $("#ddlhostCities");
+                        select.empty();
+                        select.append($('<option/>', {
+                            value: 0,
+                            text: "Select a City"
+                        }));
+                        $.each(classesData, function (index, itemData) {
+                            select.append($('<option/>', {
+                                value: itemData.Value,
+                                text: itemData.Text
+                            }));
+                        });
+                    });
+            });
+
+
+
+
+        });
+    </script>
+
+}
+
+

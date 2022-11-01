@@ -1,0 +1,95 @@
+﻿@model TravelBookingProject.ViewModel.EmployeeChildrenInfoViewModel
+@{
+    ViewBag.Title = "EmployeeChildrenInfoForm";
+}
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>                    @*We are doing this to validate the field at client side*@
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<style>
+    body {
+        background-color: cornsilk;
+    }
+</style>
+
+<h2 class="text-center" style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;color:darkgreen; font-size:45px; font-weight:200">Employee Children Info </h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" });
+    <table class="table" style="background-color: azure">
+        <tr>
+            <td>@Html.Label("Children Name")</td>
+            <td>
+                @Html.TextBoxFor(m => m.ChildrenName, new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.Label("Date of Birth")</td>
+            <td>
+                @Html.EditorFor(m => m.ChildDateOfBirth, new { @class = "form-control" })
+                &nbsp;&nbsp;
+                <img src="~/Content/images/cal5.png" style="height:40px; width:40px" />
+            </td>
+           
+        </tr>
+        <tr>
+            <td>
+                @Html.Label("Primary Citizenship")
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.PrimaryCitizenship, new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.Label("Dependent for tax purpose in home country")
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Dependent_for_tax_purpose_in_home_country, new { @class = "form-control" })
+            </td>
+        </tr>
+       
+
+
+    </table>
+
+
+
+}
+@using (Html.BeginForm())
+{
+    <div class="center-block" style="margin-left:500px">
+        <input type="submit" class="btn btn-warning" value="Add" style="height:50px; width:100px; font-size:20px; background-color:yellow;color:black;" onclick="if (confirm('Are the details entered by you correct?')) {return true;} else {return false;}" formaction="@Url.Action("EmployeeChildrenInfoForm","EmployeeChildrenInfo" )" , formmethod="post" />
+
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        <input class="btn btn-success" value="Submit" type="submit" formaction="@Url.Action("Submit","EmployeeChildrenInfo" )" , formmethod="post" style="height:50px; width:100px; font-size:20px; background-color:lightgreen; color:black;" />
+
+
+
+    </div>
+}
+@section Scripts {
+
+    @Scripts.Render("~/bundles/jqueryui")
+    @Styles.Render("~/Content/cssjqryUi")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("input[type=datetime]").datepicker({
+                dateFormat: "yy-m-dd",
+                changeMonth: true,
+                changeYear: true,
+
+
+            });
+
+
+        });
+    </script>
+
+}
+
+

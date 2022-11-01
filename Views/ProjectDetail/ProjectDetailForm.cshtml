@@ -1,0 +1,94 @@
+﻿@model TravelBookingProject.ViewModel.ProjectDetailViewModel
+@{
+    ViewBag.Title = "ProjectDetailForm";
+}
+<style>
+    body {
+        background-color: cornsilk;
+    }
+</style>
+<h2 class="text-center" style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;color:darkgreen; font-size:45px; font-weight:200">ProjectDetailForm</h2>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" });
+    <table class="table"  style="font-size:15px; background-color:azure">
+        <tr>
+            <td>
+                @Html.Label("Role/title in Host Country:")
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Role_in_Host_Country, new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.Label("Brief Description of the role in the host country:")
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Role_description_Host_Country, new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.Label("Annual Base Salary(amount and currency):")
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Annual_base_Salary, new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.Label("Name of Worldline entity bearing the costs in the host country:")
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Worldline_Entity_name_bearing_costs, new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.Label("Worldline costs centre bearing the costs:")
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.worldline_costs_centre_bearing_costs, new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.Label("Name of client for whom employee will be working(if applicable,otherwise specify NA:")
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Client_name_for_whome_Employee_Working, new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.Label("Name of project on which employee will be working(if applicable, otherwise specify NA):")
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Project_name_on_which_Employee_Working, new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.Label("Nature of the activity in the host country:")
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Nature_of_Activity, new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.Label("Worldline Recruitment or WFM request ID(Igrasp/Roma/DSMS)-if applicable, otherwise specify NA:")
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Worldline_recruitment, new { @class = "form-control" })
+            </td>
+        </tr>
+       
+        <tr>
+            <td colspan="2" style="text-align:center">
+                <input type="submit" class="btn btn-success" style="height:50px; width:100px; font-size:20px; background-color:chartreuse; color:black; margin-left:100px" onclick="if (confirm('Are the details entered by you correct?')) {return true;} else {return false;}"/>
+            </td>
+        </tr>
+    </table>
+}

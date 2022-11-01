@@ -1,0 +1,541 @@
+﻿@model TravelBookingProject.ViewModel.MobilityViewModel
+@{
+    ViewBag.Title = "GlobalMobilityForm";
+}
+
+@*<h2>GlobalMobilityForm</h2>*@
+<div style="text-align:center">
+    <img src="~/Images/logo-worldline.png" height="100" width="400" />
+</div>
+<div style="text-align:center; border: 3px solid black; border-radius: 10px; margin: 20px; background-image: linear-gradient(to right, lightseagreen 0%, white 100%); font-weight:bold;
+color:white"><h2><b>Global Mobility Invitation Form</b></h2></div>
+
+<div style="border: 2px solid black; background-color: lightseagreen; border-radius: 8px"><h2 style="font-weight: bold; text-align:center">Assignment Details</h2></div>
+
+<br />
+<br />
+
+<div>
+    <table class="table table-striped table-bordered" style="border:2px solid black">
+        <tr>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("From (Home Country)")</td>
+            <td>
+                @Html.TextBox(mb, "", new { @class = "form-control" })
+            </td>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("To (Host Country)")</td>
+            <td>
+                @Html.TextBox("Host Country", "", new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("From (Home City)")</td>
+            <td>
+                @Html.TextBox("Home City", "", new { @class = "form-control" })
+            </td>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("To (Host City)")</td>
+            <td>
+                @Html.TextBox("Host City", "", new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("From GBU")</td>
+            <td>
+                @Html.TextBox("GBU", "", new { @class = "form-control" })
+            </td>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("To GBU")</td>
+            <td>
+                @Html.TextBox("GBU", "", new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("From Legal Entity")</td>
+            <td>
+                @Html.TextBox("Legal Entity", "", new { @class = "form-control" })
+            </td>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("To Legal Entity")</td>
+            <td>
+                @Html.TextBox("Legal Entity", "", new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("From Division")</td>
+            <td>
+                @Html.TextBox("Division", "", new { @class = "form-control" })
+            </td>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("To Division")</td>
+            <td>
+                @Html.TextBox("Division", "", new { @class = "form-control" })
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div>
+    <p style="font-weight:bold; color:darkgray; font-family:'Arial Rounded MT'">If this request concerns a new employee please indicate the country and city of residence prior to hire in the "Home" information (left hand column) and the new country and city of residence in the "Host" information (right hand column). If the employee is a new hire but is not moving to join Worldline then the "Home" and "Host" information will be the same.</p>
+</div>
+
+<div>
+    <table class="table table-striped table-bordered" style="border:2px solid black">
+        <tr>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("Expected start date:)")</td>
+            <td>
+                @Html.EditorFor(m=>m.E, new { @class = "form-control" })
+            </td>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("Expected end date(*):")</td>
+            <td>
+                @Html.EditorFor("Expected end date", "", new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("Reason for this mobility request:")</td>
+            <td>
+                @Html.TextBox("Reason for this mobility request", "", new { @class = "form-control" })
+            </td>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("Is this employee replacing another internationally mobile employee?")</td>
+            <td>
+                @Html.TextBox("Is this employee replacing another internationally mobile employee", "", new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("Employee will be directly reporting to(please provide the exact position too):")</td>
+            <td>
+                @Html.TextBox("Employee will be directly reporting to(please provide the exact position too", "", new { @class = "form-control" })
+            </td>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("Performance review will be done by(please provide the exact position too):")</td>
+            <td>
+                @Html.TextBox("Performance review will be done by(please provide the exact position too", "", new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("will employee work full time in host country?")</td>
+            <td>
+                @Html.TextBox("will employee work full time in host country", "", new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("If employee not full time in host country then provide estimated work schedule or provide an estimate of the percentage of time the employee will work in the host country:")</td>
+            <td>
+                @Html.TextBox("work in host country", "", new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("Expected employment relationship in the host country:")</td>
+            <td>
+                @Html.TextBox("Expected employment relationship in the host country", "", new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("Why ism't a local employee being considered for this position?(rationale to be used for potential labour and immigration law requirements")</td>
+            <td>
+                @Html.TextBox("employee position", "", new { @class = "form-control" })
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div>
+    <p style="font-weight:bold; color:darkgray; font-family:'Arial Rounded MT'">
+        (*) This field is required, unless the employee is a new hire with no foreseeable end date to his/her employment, or an existing employee whose employment relationship is transferred to the host entity for limited period of time, please specify the end date.
+    </p>
+</div>
+
+<div>
+    <table class="table table-striped table-bordered" style="border:2px solid black">
+        <tr>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("Role/Title in host country:")</td>
+            <td>
+                @Html.TextBox("Role/Title in host country", "", new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("Brief description of the role in the host country:")</td>
+            <td>
+                @Html.TextBox("Brief description", "", new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("Annual base salary(amount and currency):")</td>
+            <td>
+                @Html.TextBox("Annual base salary", "", new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("Name of Worldline entity bearing the costs in the host country:")</td>
+            <td>
+                @Html.TextBox("Name of Worldline entity", "", new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("Worldline cost center bearing the costs:")</td>
+            <td>
+                @Html.TextBox("Worldline cost center", "", new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("Name of client for whom employee will be working (if applicable, otherwise specify NA):")</td>
+            <td>
+                @Html.TextBox("Name of client for whom employee", "", new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("Name of project on which employee will be working (if applicable, otherwise specify NA):")</td>
+            <td>
+                @Html.TextBox("Name of project on which employee", "", new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("Nature of the activity in the host country")</td>
+            <td>
+                @Html.TextBox("Nature of the activity in the host country", "", new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("Worldline recruitment or WFM request ID (Igrasp/Roma/DSMS)-if applicable, otherwise specify NA:")</td>
+            <td>
+                @Html.TextBox("Worldline recruitment or WFM", "", new { @class = "form-control" })
+            </td>
+        </tr>
+    </table>
+
+</div>
+
+
+<br />
+<br />
+<div style="border: 2px solid black; background-color: lightseagreen; border-radius: 8px"><h2 style="font-weight: bold; text-align:center">Assignment Contact</h2></div>
+<br />
+<br />
+
+<div>
+    <table class="table table-striped table-bordered" style="border:2px solid black">
+        <tr>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("Name of budget holder for this request:")</td>
+            <td>
+                @Html.TextBox("Name of budget holder for this request", "", new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("Budget holder email address:")</td>
+            <td>
+                @Html.TextBox("Budget holder email address", "", new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("Home HR Director name:")</td>
+            <td>
+                @Html.TextBox("Home HR Director name", "", new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("Home HR Director email address:")</td>
+            <td>
+                @Html.TextBox("Home HR Director email address", "", new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("Home line manager name:")</td>
+            <td>
+                @Html.TextBox("Home line manager name", "", new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("Home line manager email):")</td>
+            <td>
+                @Html.TextBox("Home line manager email", "", new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("Host HR Director name):")</td>
+            <td>
+                @Html.TextBox("Host HR Director name", "", new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("Host HR Director email address:")</td>
+            <td>
+                @Html.TextBox("Host HR Director email address", "", new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("Host line manager name (if applicable, otherwise specify NA:")</td>
+            <td>
+                @Html.TextBox("Host line manager name", "", new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("Host line manager email (if applicable, otherwise specify NA:")</td>
+            <td>
+                @Html.TextBox("Host line manager email", "", new { @class = "form-control" })
+            </td>
+        </tr>
+    </table>
+
+</div>
+
+
+<br />
+<br />
+<div style="border: 2px solid black; background-color: lightseagreen; border-radius: 8px"><h2 style="font-weight: bold; text-align:center">Employee and Family Information</h2></div>
+<br />
+<br />
+
+<div>
+    <table class="table table-striped table-bordered" style="border:2px solid black">
+        <tr>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("Last name")</td>
+            <td>
+                @Html.TextBox("Last name", "", new { @class = "form-control" })
+            </td>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("First name")</td>
+            <td>
+                @Html.TextBox("First name", "", new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("Date of birth")</td>
+            <td>
+                @Html.TextBox("Date of birth", "", new { @class = "form-control" })
+            </td>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("Gender")</td>
+            <td>
+                @Html.TextBox("Gender", "", new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("Primary citizenship")</td>
+            <td>
+                @Html.TextBox("Primary citizenship", "", new { @class = "form-control" })
+            </td>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("Secondary citizenship")</td>
+            <td>
+                @Html.TextBox("Secondary citizenship", "", new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("Das ID number")</td>
+            <td>
+                @Html.TextBox("Das ID number", "", new { @class = "form-control" })
+            </td>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("Employee email address")</td>
+            <td>
+                @Html.TextBox("Employee email address", "", new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("GCM Level in home country")</td>
+            <td>
+                @Html.TextBox("GCM Level in home country", "", new { @class = "form-control" })
+            </td>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("GCM Level in host country")</td>
+            <td>
+                @Html.TextBox("GCM Level in host country", "", new { @class = "form-control" })
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div>
+    <p style="font-weight:bold; color:darkgray; font-family:'Arial Rounded MT'">
+        If this request concerns a new hire for worldline then leave the field "DAS ID number" blank, and the GCM level should be the same in Hme and the Host.
+    </p>
+</div>
+
+<div>
+    <table class="table table-striped table-bordered" style="border:2px solid black">
+        <tr>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("Family status a home country legal perspective?")</td>
+            <td>
+                @Html.TextBox("Family status a home country", "", new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("Family in the host country")</td>
+            <td>
+                @Html.TextBox("Family in the host country", "", new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center; background-color:lightseagreen">@Html.Label("Where will employees spouse / partener be living whilst employee is in the host country?")</td>
+            <td>
+                @Html.TextBox("Where will employees spouse / partener", "", new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr class="table-striped active">
+
+            <td style="background-color: lightseagreen;border-block-color:black">
+                @Html.Label("children's name (Last name ,First name)")
+            </td>
+
+            <td style="background-color:lightseagreen;border-block-color:black">
+                @Html.Label("Date of birth")
+            </td>
+
+            <td style="background-color:lightseagreen;border-block-color:black">
+                @Html.Label("Primary Citizenship")
+            </td>
+
+            <td style="background-color:lightseagreen;border-block-color:black">
+                @Html.Label("Dependent(s) for tax purposes in the home country")
+            </td>
+        </tr>
+        <tr class="table-striped">
+            <td>
+                @Html.TextBox("childname", null, new { @class = "form-control" })
+
+            </td>
+            <td class="col-md-2">
+                @Html.TextBox("childdob", null, new { @class = "form-control" })
+
+            </td>
+
+            <td>
+                @Html.TextBox("childprimarycitizenship", null, new { @class = "form-control" })
+
+            </td>
+
+            <td>
+                @Html.TextBox("tax", null, new { @class = "form-control" })
+
+            </td>
+        </tr>
+        <tr class="table-striped">
+            <td>
+                @Html.TextBox("childname", null, new { @class = "form-control" })
+
+            </td>
+            <td class="col-md-2">
+                @Html.TextBox("childdob", null, new { @class = "form-control" })
+
+            </td>
+
+            <td>
+                @Html.TextBox("childprimarycitizenship", null, new { @class = "form-control" })
+
+            </td>
+
+            <td>
+                @Html.TextBox("tax", null, new { @class = "form-control" })
+
+            </td>
+        </tr>
+        <tr class="table-striped">
+            <td>
+                @Html.TextBox("childname", null, new { @class = "form-control" })
+
+            </td>
+            <td class="col-md-2">
+                @Html.TextBox("childdob", null, new { @class = "form-control" })
+
+            </td>
+
+            <td>
+                @Html.TextBox("childprimarycitizenship", null, new { @class = "form-control" })
+
+            </td>
+
+            <td>
+                @Html.TextBox("tax", null, new { @class = "form-control" })
+
+            </td>
+        </tr>
+        <tr class="table-striped">
+            <td>
+                @Html.TextBox("childname", null, new { @class = "form-control" })
+
+            </td>
+            <td class="col-md-2">
+                @Html.TextBox("childdob", null, new { @class = "form-control" })
+
+            </td>
+
+            <td>
+                @Html.TextBox("childprimarycitizenship", null, new { @class = "form-control" })
+
+            </td>
+
+            <td>
+                @Html.TextBox("tax", null, new { @class = "form-control" })
+
+            </td>
+        </tr>
+        <tr class="table-striped">
+            <td>
+                @Html.TextBox("childname", null, new { @class = "form-control" })
+
+            </td>
+            <td class="col-md-2">
+                @Html.TextBox("childdob", null, new { @class = "form-control" })
+
+            </td>
+
+            <td>
+                @Html.TextBox("childprimarycitizenship", null, new { @class = "form-control" })
+
+            </td>
+
+            <td>
+                @Html.TextBox("tax", null, new { @class = "form-control" })
+
+            </td>
+        </tr>
+        <tr class="table-striped">
+            <td>
+                @Html.TextBox("childname", null, new { @class = "form-control " })
+
+            </td>
+            <td class="col-md-2">
+                @Html.TextBox("childdob", null, new { @class = "form-control" })
+
+            </td>
+
+            <td>
+                @Html.TextBox("childprimarycitizenship", null, new { @class = "form-control" })
+
+            </td>
+
+            <td>
+                @Html.TextBox("tax", null, new { @class = "form-control" })
+
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div>
+    <table class="table col-lg-10 col-md-4 ">
+        <tbody class="table-striped" style="text-align:center; border:2px solid black; font-weight:200 bold bolder;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
+            <tr>
+
+                <td colspan="2" style="background-color:white">Confidentiality requirements</td>
+            </tr>
+        </tbody>
+
+    </table>
+</div>
+
+<div class=" table-responsive table-bordered ">
+    <table class="table tab-content table-striped  ">
+        <tbody class="table-active" style="text-align:center; border:1px solid black ">
+            <tr>
+
+                <td style="background-color: lightseagreen;border-block-color:black">
+                    @Html.Label("Data provided in this form will be viewable by the GM SPOCs in the home and host countries, as well as GM team members via the Global Mobility platform. If you require more restrictive confidentiality measures, please describe your requirements below:")
+                </td>
+
+            </tr>
+            <tr>
+                <td class="col-lg-12" style="border-color:black">
+                    @Html.TextArea("data", null, new { @class = "form-control" })
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2" style="text-align:center">
+                    <input type="submit" class="btn btn-success" />
+                </td>
+            </tr>
+
+        </tbody>
+
+    </table>
+</div>
